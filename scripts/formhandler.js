@@ -44,7 +44,7 @@
         data[item.name] = item.value;
         console.log(item.name + ' is ' + item.value);
       });
-      //console.log(data);
+      console.log(data);
       fn(data);
       this.reset();
       changeStrengthLevel(strengthLabel, $('#strengthLevel').prop('value'));
@@ -54,12 +54,12 @@
 
   FormHandler.prototype.addRangeHandler = function() {
     console.log('Setting range handler for form');
-
+    changeStrengthLevel(strengthLabel, $('#strengthLevel').prop('value'));
     strengthLabel.text("Caffeine Rating: " + $('#strengthLevel').prop('value'));
-    $('#strengthLevel').change('value', function(event) {
+    this.$formElement.change('value', function(event) {
       event.preventDefault();
       changeStrengthLevel(strengthLabel, $('#strengthLevel').prop('value'));
-    });
+    }.bind(this));
   };
 
   App.FormHandler = FormHandler;
