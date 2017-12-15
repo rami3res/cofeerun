@@ -45,10 +45,12 @@
         console.log(item.name + ' is ' + item.value);
       });
       console.log(data);
-      fn(data);
-      this.reset();
-      changeStrengthLevel(strengthLabel, $('#strengthLevel').prop('value'));
-      this.elements[0].focus();
+      fn(data)
+      .then(function() {
+        this.reset();
+        changeStrengthLevel(strengthLabel, $('#strengthLevel').prop('value'));
+        this.elements[0].focus();
+      }.bind(this));
     });
   };
 
